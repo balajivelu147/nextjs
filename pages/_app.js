@@ -45,11 +45,11 @@ export default function MyApp({ Component, pageProps }) {
           </div>
           :
           <>
-            <MessengerCustomerChat
+            {/* <MessengerCustomerChat
               pageId="2123438804574660"
               appId="406252930752412"
               htmlRef="https://connect.facebook.net/en_US/sdk.js"
-            />
+            /> */}
           <Helmet>
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <title>Multikart - Multi-purpopse E-commerce React Template</title>
