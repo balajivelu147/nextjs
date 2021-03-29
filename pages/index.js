@@ -1,65 +1,46 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import React from 'react';
+import Banner from './layouts/Fashion/Components/Banner'
+import CollectionBanner from './layouts/Fashion/Components/Collection-Banner';
+import TopCollection from '../components/common/Collections/Collection3';
+import Parallax from './layouts/Fashion/Components/Parallax';
+import SpecialProducts from '../components/common/Collections/TabCollection1';
+import ServiceLayout from '../components/common/Service/service1';
+import Blog from '../components/common/Blog/blog1';
+import Instagram from '../components/common/instagram/instagram1';
+import LogoBlock from '../components/common/logo-block';
+import FooterOne from '../components/footers/footer-one';
+import HeaderOne from '../components/headers/header-one';
+import { withApollo } from '../helpers/apollo/apollo';
+import { Product4 } from '../services/script';
+import Paragraph from '../components/common/Paragraph';
+import ModalComponent from '../components/common/Modal';
+import Helmet from 'react-helmet';
+import favicon from '../public/assets/images/favicon/1.png'
 
-export default function Home() {
+const Fashion = () => {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
-        </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+    <>
+      <Helmet>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="icon" type="image/x-icon" href={favicon?favicon:''} />
+      </Helmet>
+      <ModalComponent />
+      <HeaderOne logoName={'logo.png'} topClass="top-header" />
+      <Banner /> 
+      <CollectionBanner />
+      <Paragraph title="title1 section-t-space" inner="title-inner1" hrClass={false} />
+      <TopCollection noTitle="null" backImage={true} type="fashion" title="top collection" subtitle="special offer"  productSlider={Product4} designClass="section-b-space p-t-0 ratio_asos" noSlider="false" cartClass="cart-info cart-wrap" />
+      <Parallax />
+      <SpecialProducts type="fashion" backImage={true} productSlider={Product4} line={true} title="title1 section-t-space" inner="title-inner1"  designClass="section-b-space p-t-0 ratio_asos" noSlider="true" cartClass="cart-info cart-wrap" /> 
+      <ServiceLayout sectionClass="border-section small-section" />
+      <Blog type="fashion" title="title1" inner="title-inner1" />
+      <Instagram type="fashion"/>
+      <div className="section-b-space">
+      <LogoBlock />
+      </div>
+      <FooterOne logoName={'logo.png'} />
+    </>
   )
 }
+
+export default withApollo(Fashion);
